@@ -9,7 +9,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! faf = "0.1"
+//! faf = "0.3"
 //! ```
 //!
 //! ```rust,no_run
