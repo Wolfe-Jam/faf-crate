@@ -1,6 +1,10 @@
 # faf
 
-**One crate, full ecosystem.** Parse, validate, compile, and broadcast `.faf` files in Rust.
+**Persistent Project Context for Rust. `cargo add faf` and you're in.**
+
+**FAF defines. MD instructs. AI codes.**
+
+One crate, full ecosystem. Parse, validate, compile, and broadcast `.faf` files in Rust.
 
 FAF (Foundational AI-context Format) is the IANA-registered format for persistent AI project context (`application/vnd.faf+yaml`). This meta-crate re-exports everything you need.
 
