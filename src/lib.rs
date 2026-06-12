@@ -13,11 +13,9 @@
 //! ```
 //!
 //! ```rust,no_run
-//! use faf::FafDocument;
-//!
 //! let yaml = std::fs::read_to_string("project.faf").unwrap();
-//! let doc = FafDocument::from_yaml(&yaml).unwrap();
-//! println!("{}: {}", doc.name(), doc.score());
+//! let file = faf::parse(&yaml).unwrap();
+//! println!("{}: {:?}", file.project_name(), file.score());
 //! ```
 //!
 //! ## Features
