@@ -90,6 +90,8 @@ async fn handler(faf: FafContext) -> String {
 
 Also available in [TypeScript](https://www.npmjs.com/package/faf-cli), [Python](https://pypi.org/project/faf-python-sdk/), and [Zig](https://github.com/Wolfe-Jam/xai-faf-zig).
 
+If `faf` has been useful, consider starring the repo — it helps others find it.
+
 ## Links
 
 - **Website:** [faf.one](https://faf.one)
