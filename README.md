@@ -2,7 +2,7 @@
 
 **Persistent Project Context for Rust. `cargo add faf` and you're in.**
 
-**FAF defines. MD instructs. AI codes.**
+**FAF defines. AGENTS.md instructs. AI codes.**
 
 One crate, full ecosystem. Parse, validate, compile, and broadcast `.faf` files in Rust.
 
