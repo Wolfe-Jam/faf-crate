@@ -2,6 +2,8 @@
 
 **Persistent Project Context for Rust. `cargo add faf` and you're in.**
 
+⭐ [Star it on GitHub](https://github.com/Wolfe-Jam/faf-crate): bookmarks it for you, helps other devs find it too.
+
 **FAF defines. AGENTS.md instructs. AI codes.**
 
 One crate, full ecosystem. Parse, validate, compile, and broadcast `.faf` files in Rust.
