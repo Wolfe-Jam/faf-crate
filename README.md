@@ -25,16 +25,19 @@ cargo add faf --features radio,axum
 ## Quick Start
 
 ```rust
-use faf::{parse, binary};
+use faf::{binary, parse, score};
 
 let yaml = std::fs::read_to_string("project.faf")?;
 
 // Parse
 let doc = parse(&yaml)?;
-println!("{} — {}% AI-ready", doc.project_name(), doc.score().unwrap_or(0));
+
+// Score with the always-33 kernel (the same score as faf-cli)
+let result = score(&yaml)?;
+println!("{} — {}% ({}), {}/{} slots", doc.project_name(), result.score, result.tier, result.populated, result.active);
 
 // Compile to FAFb binary
-let fafb = binary::compile(&yaml)?;
+let fafb = binary::compile(&yaml, &binary::CompileOptions::default())?;
 println!("{} bytes YAML → {} bytes FAFb", yaml.len(), fafb.len());
 ```
 
@@ -91,7 +94,7 @@ async fn handler(faf: FafContext) -> String {
 | [`faf-radio-rust`](https://crates.io/crates/faf-radio-rust) | Radio Protocol client |
 | [`rust-faf-mcp`](https://crates.io/crates/rust-faf-mcp) | MCP server for .faf |
 
-`faf` 0.3.1 re-exports `faf-rust-sdk` 1.3 and, with `radio`, `faf-radio-rust` 0.2.
+`faf` 0.4.0 re-exports `faf-rust-sdk` 3.1 and, with `radio`, `faf-radio-rust` 0.2.
 
 Also available in [TypeScript](https://www.npmjs.com/package/faf-cli) and [Python](https://pypi.org/project/faf-python-sdk/).
 

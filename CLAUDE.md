@@ -1,7 +1,7 @@
 # CLAUDE.md - faf (meta-crate)
 
 ## PROJECT STATE: PRODUCTION
-**Version:** 0.3.1
+**Version:** 0.4.0
 **Test Status:** `tests/readme.rs` compiles every README example; the SDK's own tests live in its crate
 **Deployment:** crates.io, published by `.github/workflows/publish-crate.yml` (Trusted Publishing) on a GitHub release
 
@@ -11,7 +11,7 @@
 
 ### Project Identity
 - **Name:** faf
-- **Version:** 0.3.1
+- **Version:** 0.4.0
 - **Stack:** Rust 2024 (rust-version 1.85)
 - **What:** Meta-crate unifying FAF Rust ecosystem under `cargo add faf`
 - **Repo:** github.com/Wolfe-Jam/faf-crate
@@ -19,9 +19,9 @@
 ### What's Inside
 | Feature | Crate | Version |
 |---------|-------|---------|
-| `sdk` (default) | faf-rust-sdk | 1.3.0 |
+| `sdk` (default) | faf-rust-sdk | 3.1 |
 | `radio` | faf-radio-rust | 0.2.0 |
-| `axum` | faf-rust-sdk/axum | 1.3.0 |
+| `axum` | faf-rust-sdk/axum | 3.1 |
 
 ### Key Files
 - `Cargo.toml` — Feature flags + dep versions (the whole point)
@@ -61,7 +61,7 @@ cargo add faf --features radio,axum → everything
 ### Sub-Crate Versions (track here)
 | Crate | Current | crates.io |
 |-------|---------|-----------|
-| faf-rust-sdk | 1.3.0 | 145/145 tests |
+| faf-rust-sdk | 3.1.1 | always-33 kernel + FAFb + Axum |
 | faf-radio-rust | 0.2.0 | 50/50 tests |
 
 ---

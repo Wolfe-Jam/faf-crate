@@ -3,14 +3,14 @@ project:
   name: faf
   goal: Meta-crate for the FAF Rust ecosystem — one install, full stack
   main_language: Rust
-  version: 0.3.1
+  version: 0.4.0
   license: MIT
   type: rust_crate
   subtype: meta_crate
   ecosystem: faf-rust
 instant_context:
   what_building: Rust meta-crate re-exporting faf-rust-sdk + faf-radio-rust
-  tech_stack: Rust 2021
+  tech_stack: Rust 2024 (rust-version 1.85)
   deployment: crates.io
   main_language: Rust
   key_files:
@@ -23,7 +23,7 @@ instant_context:
   commands:
     build: cargo build
     check: cargo check --features radio,axum
-    publish: cargo publish --allow-dirty
+    publish: /pubcrate faf (GitHub release → publish-crate.yml, OIDC)
 ai_instructions:
   priority_order:
     - 1. Read THIS .faf file first
@@ -42,7 +42,7 @@ human_context:
   when: March 2026
 state:
   phase: production
-  version: 0.3.1
+  version: 0.4.0
   status: green_flag
   focus: Radio 0.2 integration (grok presets + client broadcast)
 stack:

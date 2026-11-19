@@ -6,20 +6,26 @@
 
 /// README "Quick Start".
 fn quick_start() -> Result<(), Box<dyn std::error::Error>> {
-    use faf::{binary, parse};
+    use faf::{binary, parse, score};
 
     let yaml = std::fs::read_to_string("project.faf")?;
 
     // Parse
     let doc = parse(&yaml)?;
+
+    // Score with the always-33 kernel (the same score as faf-cli)
+    let result = score(&yaml)?;
     println!(
-        "{} — {}% AI-ready",
+        "{} — {}% ({}), {}/{} slots",
         doc.project_name(),
-        doc.score().unwrap_or(0)
+        result.score,
+        result.tier,
+        result.populated,
+        result.active
     );
 
     // Compile to FAFb binary
-    let fafb = binary::compile(&yaml)?;
+    let fafb = binary::compile(&yaml, &binary::CompileOptions::default())?;
     println!("{} bytes YAML → {} bytes FAFb", yaml.len(), fafb.len());
     Ok(())
 }
@@ -62,6 +68,18 @@ mod axum_example {
     async fn handler(faf: FafContext) -> String {
         format!("Project: {}", faf.project_name())
     }
+}
+
+/// The Quick Start scores this repo's own project.faf: it runs, not only compiles.
+#[test]
+fn quick_start_runs_on_this_repo() {
+    let yaml =
+        std::fs::read_to_string(concat!(env!("CARGO_MANIFEST_DIR"), "/project.faf")).unwrap();
+    faf::parse(&yaml).unwrap();
+    let result = faf::score(&yaml).unwrap();
+    assert!(result.score <= 100);
+    let fafb = faf::binary::compile(&yaml, &faf::binary::CompileOptions::default()).unwrap();
+    assert!(!fafb.is_empty());
 }
 
 #[test]

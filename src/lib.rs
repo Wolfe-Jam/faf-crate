@@ -9,13 +9,14 @@
 //!
 //! ```toml
 //! [dependencies]
-//! faf = "0.3"
+//! faf = "0.4"
 //! ```
 //!
 //! ```rust,no_run
 //! let yaml = std::fs::read_to_string("project.faf").unwrap();
 //! let file = faf::parse(&yaml).unwrap();
-//! println!("{}: {:?}", file.project_name(), file.score());
+//! let result = faf::score(&yaml).unwrap(); // always-33 kernel, same score as faf-cli
+//! println!("{}: {}% ({})", file.project_name(), result.score, result.tier);
 //! ```
 //!
 //! ## Features
