@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Docs
+- **README:** badges (crates.io, docs.rs, CI, MSRV); Rust 1.85 stated under Install; a starter `project.faf` and `npx faf-cli init` before the Quick Start; the Quick Start is a complete `main`; scoring named in the intro and the `sdk` row; Radio frequencies and the `grok()` preset explained; where to report issues (faf-rust, faf-radio-rust, here); one star request, not two.
+- **SECURITY.md:** reports go to `team@faf.one`.
+- `tests/readme.rs` parses, scores and compiles the README's starter `project.faf`.
+
 ## [0.4.0] - 2026-11-19 — The Current Engine Edition
 
 **0.4.0: `cargo add faf` gives you the current engine — faf-rust-sdk 3.1, the always-33 kernel, the same score as faf-cli.**

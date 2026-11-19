@@ -91,3 +91,18 @@ fn readme_examples_compile() {
     #[cfg(feature = "axum")]
     let _ = axum_example::app;
 }
+
+/// README "Quick Start": the starter project.faf parses, scores and compiles.
+/// Read from the README itself, so the sample there can't drift.
+#[test]
+fn readme_starter_faf_works() {
+    let readme =
+        std::fs::read_to_string(concat!(env!("CARGO_MANIFEST_DIR"), "/README.md")).unwrap();
+    let start = readme.find("```yaml\n").expect("README has a yaml sample") + "```yaml\n".len();
+    let end = start + readme[start..].find("```").unwrap();
+    let yaml = &readme[start..end];
+    let doc = faf::parse(yaml).unwrap();
+    assert_eq!(doc.project_name(), "my-app");
+    faf::score(yaml).unwrap();
+    faf::binary::compile(yaml, &faf::binary::CompileOptions::default()).unwrap();
+}
