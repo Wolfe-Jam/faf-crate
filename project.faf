@@ -3,14 +3,14 @@ project:
   name: faf
   goal: Meta-crate for the FAF Rust ecosystem — one install, full stack
   main_language: Rust
-  version: 0.3.0
+  version: 0.4.0
   license: MIT
-  type: rust_crate
+  type: library
   subtype: meta_crate
   ecosystem: faf-rust
 instant_context:
   what_building: Rust meta-crate re-exporting faf-rust-sdk + faf-radio-rust
-  tech_stack: Rust 2021
+  tech_stack: Rust 2024 (rust-version 1.85)
   deployment: crates.io
   main_language: Rust
   key_files:
@@ -23,7 +23,7 @@ instant_context:
   commands:
     build: cargo build
     check: cargo check --features radio,axum
-    publish: cargo publish --allow-dirty
+    publish: /pubcrate faf (GitHub release → publish-crate.yml, OIDC)
 ai_instructions:
   priority_order:
     - 1. Read THIS .faf file first
@@ -34,21 +34,44 @@ ai_instructions:
     explanations: minimal
     quality_bar: zero_errors
 human_context:
-  who: wolfejam
+  who: Rust developers who want to read, score or compile .faf files from one dependency
   what: Meta-crate unifying FAF Rust ecosystem under one install
   why: cargo add faf = full ecosystem. No hunting for individual crates.
   how: Re-exports via pub use + optional feature-gated deps
   where: crates.io, GitHub (Wolfe-Jam/faf-crate)
-  when: March 2026
+  when: In production on crates.io since March 2026; 0.4.0 moves to faf-rust-sdk 3.1
 state:
   phase: production
-  version: 0.3.0
+  version: 0.4.0
   status: green_flag
   focus: Radio 0.2 integration (grok presets + client broadcast)
 stack:
-  backend: Rust 2021 Edition
-  build_tool: Cargo
+  backend: Rust 2024 Edition
+  hosting: crates.io
+  cicd: GitHub Actions
+  build: Cargo
   registry: crates.io
+  frontend: slotignored
+  css_framework: slotignored
+  ui_library: slotignored
+  state_management: slotignored
+  api_type: slotignored
+  runtime: slotignored
+  database: slotignored
+  connection: slotignored
+  monorepo_tool: slotignored
+  package_manager: slotignored
+  workspaces: slotignored
+  admin: slotignored
+  cache: slotignored
+  search: slotignored
+  storage: slotignored
+monorepo:
+  packages_count: slotignored
+  build_orchestrator: slotignored
+  versioning_strategy: slotignored
+  shared_configs: slotignored
+  remote_cache: slotignored
 preferences:
   quality_bar: zero_errors
   commit_style: conventional_emoji

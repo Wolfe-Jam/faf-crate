@@ -33,3 +33,12 @@ jobs:
       - run: cargo clippy --locked --all-features -- -D warnings
       - run: cargo test --locked --all-features
       - run: cargo build --locked --all-features --release
+
+  # rust-version in Cargo.toml is the promise; this job keeps it.
+  msrv:
+    name: msrv (1.85)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.85
+      - run: cargo build --locked --all-features
