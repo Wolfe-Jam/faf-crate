@@ -4,6 +4,7 @@
 [![docs.rs](https://img.shields.io/docsrs/faf)](https://docs.rs/faf)
 [![CI](https://github.com/Wolfe-Jam/faf-crate/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Wolfe-Jam/faf-crate/actions/workflows/ci.yml)
 [![MSRV 1.85](https://img.shields.io/badge/rustc-1.85+-blue.svg)](https://github.com/Wolfe-Jam/faf-crate/blob/main/Cargo.toml)
+[![Business card · Get yours →](https://wolfe-jam.github.io/agent-business-card/badge.svg)](https://wolfe-jam.github.io/agent-business-card/?repo=Wolfe-Jam/faf-crate)
 
 **Persistent Project Context for Rust. `cargo add faf` and you're in.**
 
@@ -114,7 +115,7 @@ async fn handler(faf: FafContext) -> String {
 | [`faf-radio-rust`](https://crates.io/crates/faf-radio-rust) | Radio Protocol client |
 | [`rust-faf-mcp`](https://crates.io/crates/rust-faf-mcp) | MCP server for .faf |
 
-`faf` 0.4.0, The Current Engine Edition, re-exports `faf-rust-sdk` 3.1 and, with `radio`, `faf-radio-rust` 0.2.
+`faf` 0.4.1, The Current Engine Edition, re-exports `faf-rust-sdk` 3.1 and, with `radio`, `faf-radio-rust` 0.2.
 
 Also available in [TypeScript](https://www.npmjs.com/package/faf-cli) and [Python](https://pypi.org/project/faf-python-sdk/).
 
