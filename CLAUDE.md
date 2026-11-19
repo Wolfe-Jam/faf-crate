@@ -1,3 +1,36 @@
+<!-- faf:start -->
+<!-- faf: faf | Rust | library | Meta-crate for the FAF Rust ecosystem — one install, full stack -->
+<!-- faf: claim=project.faf | family=FAF -->
+
+# CLAUDE.md — faf
+
+## What This Is
+
+Meta-crate for the FAF Rust ecosystem — one install, full stack
+
+## Stack
+
+- **Language:** Rust
+- **Backend:** Rust 2024 Edition
+- **Hosting:** crates.io
+- **CI/CD:** GitHub Actions
+- **Build:** Cargo
+- **Registry:** crates.io
+
+## Context
+
+- **Who:** Rust developers who want to read, score or compile .faf files from one dependency
+- **What:** Meta-crate unifying FAF Rust ecosystem under one install
+- **Why:** cargo add faf = full ecosystem. No hunting for individual crates.
+- **Where:** crates.io, GitHub (Wolfe-Jam/faf-crate)
+- **When:** In production on crates.io since March 2026; 0.4.0 moves to faf-rust-sdk 3.1
+- **How:** Re-exports via pub use + optional feature-gated deps
+
+---
+
+*STATUS: SYNC ACTIVE — 2026-11-19T19:45:29.216Z*
+<!-- faf:end -->
+
 # CLAUDE.md - faf (meta-crate)
 
 ## PROJECT STATE: PRODUCTION
