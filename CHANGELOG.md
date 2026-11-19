@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.4.0] - 2026-11-19
+## [0.4.0] - 2026-11-19 — The Current Engine Edition
 
 **0.4.0: `cargo add faf` gives you the current engine — faf-rust-sdk 3.1, the always-33 kernel, the same score as faf-cli.**
 

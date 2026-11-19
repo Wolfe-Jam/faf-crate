@@ -94,7 +94,7 @@ async fn handler(faf: FafContext) -> String {
 | [`faf-radio-rust`](https://crates.io/crates/faf-radio-rust) | Radio Protocol client |
 | [`rust-faf-mcp`](https://crates.io/crates/rust-faf-mcp) | MCP server for .faf |
 
-`faf` 0.4.0 re-exports `faf-rust-sdk` 3.1 and, with `radio`, `faf-radio-rust` 0.2.
+`faf` 0.4.0, The Current Engine Edition, re-exports `faf-rust-sdk` 3.1 and, with `radio`, `faf-radio-rust` 0.2.
 
 Also available in [TypeScript](https://www.npmjs.com/package/faf-cli) and [Python](https://pypi.org/project/faf-python-sdk/).
 
