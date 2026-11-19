@@ -1,0 +1,48 @@
+version: "1.0"
+agent:
+  name: faf
+  displayName: faf
+  id: urn:air:faf.one:agent:faf
+  version: 0.4.1
+  description: "One Rust dependency for .faf project context: parse, score with the always-33 kernel (the same score as faf-cli), compile to FAFb, plus optional Axum and Radio."
+  homepage: https://faf.one
+capabilities:
+  - name: Score
+    type: tool
+    description: faf::score(&yaml) scores a project.faf with the always-33 kernel, the same score as faf-cli
+    tags:
+      - score
+  - name: Parse
+    type: tool
+    description: faf::parse(&yaml) reads a project.faf into typed Rust
+    tags:
+      - parse
+  - name: Compile to FAFb
+    type: tool
+    description: faf::binary::compile turns a project.faf into the FAFb binary format
+    tags:
+      - fafb
+  - name: Axum middleware
+    type: tool
+    description: With the axum feature, FafLayer and FafContext put project context into every request
+    tags:
+      - axum
+  - name: Radio
+    type: tool
+    description: With the radio feature, broadcast context once and every tuned client receives it
+    tags:
+      - radio
+endpoints:
+  - protocol: library
+    transport: in-process
+    location: faf
+metadata:
+  cards:
+    domain: faf.one
+    examples:
+      - How do I read and score a project.faf from Rust?
+      - Does the Rust score match faf-cli?
+      - How do I add .faf project context to an Axum server?
+    packages:
+      - registryType: cargo
+        identifier: faf

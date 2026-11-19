@@ -1,6 +1,6 @@
 [package]
 name = "faf"
-version = "0.4.0"
+version = "0.4.1"
 edition = "2024"
 rust-version = "1.85"
 authors = ["wolfejam <team@faf.one>"]
@@ -12,7 +12,7 @@ documentation = "https://docs.rs/faf"
 readme = "README.md"
 keywords = ["faf", "ai-context", "project-dna", "yaml", "mcp"]
 categories = ["development-tools", "config", "parser-implementations"]
-exclude = [".github/", "CLAUDE.md"]
+exclude = [".github/", ".config/", "CLAUDE.md"]
 
 [dependencies]
 faf-rust-sdk = "3.1"

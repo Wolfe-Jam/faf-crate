@@ -1,0 +1,15 @@
+faf_version: '3.3'
+project:
+  name: half-web
+  goal: A web app for small teams to track shared tasks
+  main_language: TypeScript
+  type: frontend
+human_context:
+  who: Small teams
+  what: Track shared tasks
+  why: Spreadsheets drift
+stack:
+  frontend: Svelte
+  css_framework: Tailwind
+  hosting: Cloudflare Pages
+  build: Vite

@@ -34,8 +34,8 @@ Meta-crate for the FAF Rust ecosystem — one install, full stack
 # CLAUDE.md - faf (meta-crate)
 
 ## PROJECT STATE: PRODUCTION
-**Version:** 0.4.0
-**Test Status:** `tests/readme.rs` compiles every README example; the SDK's own tests live in its crate
+**Version:** 0.4.1
+**Test Status:** `tests/wjttc.rs` (WJTTC: score parity with faf-cli, re-exports, version lockstep) + `tests/readme.rs` (README examples); the SDK's own tests live in its crate
 **Deployment:** crates.io, published by `.github/workflows/publish-crate.yml` (Trusted Publishing) on a GitHub release
 
 ---
@@ -44,7 +44,7 @@ Meta-crate for the FAF Rust ecosystem — one install, full stack
 
 ### Project Identity
 - **Name:** faf
-- **Version:** 0.4.0
+- **Version:** 0.4.1
 - **Stack:** Rust 2024 (rust-version 1.85)
 - **What:** Meta-crate unifying FAF Rust ecosystem under `cargo add faf`
 - **Repo:** github.com/Wolfe-Jam/faf-crate

@@ -1,6 +1,15 @@
 # Changelog
 
-## Unreleased
+## [0.4.1] - 2026-11-19
+
+**0.4.1: crates.io gets the new front door — badges, Rust 1.85, a starter project.faf, where to report issues — plus a WJTTC suite, a business card and test receipts.**
+
+No code change: `faf` still re-exports faf-rust-sdk 3.1 and, with `radio`, faf-radio-rust 0.2.
+
+### Added
+- **WJTTC suite** (`tests/wjttc.rs`, 12 tests): `faf::score` gives faf-cli 8.10.0's numbers on four fixtures (brake); versions agree across Cargo.toml, CHANGELOG, project.faf, agent.fafa and the README (brake); every README and docs path resolves under its feature (engine); MSRV and the docs pin agree (pit).
+- `agent.fafa`: the crate's business card (score, parse, FAFb, Axum, Radio), with its badge in the README.
+- **TAF test receipts:** every push to `main` runs the all-features tests under cargo-nextest and records a receipt on the `taf-receipts` branch (faf-taf-git `receipt.yml` v2.7.0), red runs included.
 
 ### Docs
 - **README:** badges (crates.io, docs.rs, CI, MSRV); Rust 1.85 stated under Install; a starter `project.faf` and `npx faf-cli init` before the Quick Start; the Quick Start is a complete `main`; scoring named in the intro and the `sdk` row; Radio frequencies and the `grok()` preset explained; where to report issues (faf-rust, faf-radio-rust, here); one star request, not two.

@@ -1,0 +1,5 @@
+faf_version: '3.3'
+project:
+  name: my-app
+  goal: What it does, and for whom
+  main_language: Rust
