@@ -17,3 +17,15 @@ jobs:
       - run: cargo clippy -- -D warnings
       - run: cargo test
       - run: cargo build --release
+
+  # radio pulls faf-radio-rust -> tokio-tungstenite -> native-tls -> openssl,
+  # which the default-feature job never compiles.
+  test-all-features:
+    name: test (all features)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo clippy --all-features -- -D warnings
+      - run: cargo test --all-features
+      - run: cargo build --all-features --release
