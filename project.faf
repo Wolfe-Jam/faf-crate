@@ -3,7 +3,7 @@ project:
   name: faf
   goal: Meta-crate for the FAF Rust ecosystem — one install, full stack
   main_language: Rust
-  version: 0.3.0
+  version: 0.3.1
   license: MIT
   type: rust_crate
   subtype: meta_crate
@@ -42,7 +42,7 @@ human_context:
   when: March 2026
 state:
   phase: production
-  version: 0.3.0
+  version: 0.3.1
   status: green_flag
   focus: Radio 0.2 integration (grok presets + client broadcast)
 stack:

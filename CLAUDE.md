@@ -1,9 +1,9 @@
 # CLAUDE.md - faf (meta-crate)
 
 ## PROJECT STATE: PRODUCTION
-**Version:** 0.3.0
-**Test Status:** Meta-crate (no own tests — delegates to sub-crates)
-**Deployment:** Published to crates.io (faf@0.3.0)
+**Version:** 0.3.1
+**Test Status:** `tests/readme.rs` compiles every README example; the SDK's own tests live in its crate
+**Deployment:** crates.io, published by `.github/workflows/publish-crate.yml` (Trusted Publishing) on a GitHub release
 
 ---
 
@@ -11,8 +11,8 @@
 
 ### Project Identity
 - **Name:** faf
-- **Version:** 0.3.0
-- **Stack:** Rust 2021
+- **Version:** 0.3.1
+- **Stack:** Rust 2024 (rust-version 1.85)
 - **What:** Meta-crate unifying FAF Rust ecosystem under `cargo add faf`
 - **Repo:** github.com/Wolfe-Jam/faf-crate
 
@@ -36,20 +36,16 @@
 cargo check                        # Default (sdk only)
 cargo check --features radio       # With Radio Protocol
 cargo check --features radio,axum  # Full stack
-cargo publish --allow-dirty        # Publish (no git required)
+cargo test --locked --all-features # README examples compile
 ```
 
-### Version Bump Protocol
-1. Update dep version in `Cargo.toml` (e.g., `faf-radio-rust = "0.2"`)
-2. Bump own version
-3. `cargo check --features radio,axum`
-4. `cargo publish --allow-dirty`
+### Release
+Run `/pubcrate faf`. It bumps the version in a release PR (Cargo.toml, Cargo.lock, CHANGELOG, README), dry-runs, then publishes by a GitHub release `v<version>`, which runs the publish workflow (tests first, then `cargo publish --locked` via OIDC). Never `cargo publish` locally, never `--allow-dirty`.
 
 ### Important Notes
-- **No tests in this crate** — tests live in the sub-crates
+- **Tests:** `tests/readme.rs` type-checks the README examples per feature; the SDK's behaviour is tested in faf-rust-sdk
 - **Repo URL in Cargo.toml** must point to `Wolfe-Jam/faf-crate` (not `Wolfe-Jam/faf`)
 - `Wolfe-Jam/faf` = the spec repo. `Wolfe-Jam/faf-crate` = this crate.
-- Not a git repo historically — use `--allow-dirty` or commit first
 
 ---
 

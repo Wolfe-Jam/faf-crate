@@ -20,9 +20,9 @@
 //!
 //! ## Features
 //!
-//! - **`sdk`** (default) — Parse, validate, and compile .faf files via [`faf-rust-sdk`]
-//! - **`axum`** — Axum middleware: inject project context into every request
-//! - **`radio`** — Radio Protocol client for MCPaaS via [`faf-radio-rust`]
+//! - **`sdk`** (default) — Parse, validate, and compile .faf files via [`faf-rust-sdk`](https://docs.rs/faf-rust-sdk)
+//! - **`axum`** — Axum middleware (`faf::axum`): inject project context into every request
+//! - **`radio`** — Radio Protocol client for MCPaaS via [`faf-radio-rust`](https://docs.rs/faf-radio-rust)
 //!
 //! ## Ecosystem
 //!

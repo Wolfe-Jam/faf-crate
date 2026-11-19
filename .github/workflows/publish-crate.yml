@@ -9,7 +9,18 @@ permissions:
   contents: read
 
 jobs:
+  # The commit being published passes the same checks as CI first.
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo test --locked
+      - run: cargo test --locked --all-features
+      - run: cargo clippy --locked --all-features -- -D warnings
+
   publish:
+    needs: test
     runs-on: ubuntu-latest
     environment: crates-io
     permissions:
@@ -18,10 +29,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
+      # A release publishes its tag. A manual run must be started from the
+      # tag too (Use workflow from: v<version>), never from a branch.
       - name: Verify tag matches Cargo.toml version
-        if: github.event_name == 'release'
         run: |
-          TAG="${{ github.event.release.tag_name }}"
+          if [ "${{ github.event_name }}" = "release" ]; then
+            TAG="${{ github.event.release.tag_name }}"
+          elif [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            TAG="${GITHUB_REF_NAME}"
+          else
+            echo "Run this workflow from a tag v<version>, not from ${GITHUB_REF_NAME}" >&2
+            exit 1
+          fi
           CARGO_VERSION=$(grep '^version = ' Cargo.toml | head -1 | cut -d'"' -f2)
           if [ "v${CARGO_VERSION}" != "$TAG" ]; then
             echo "Tag $TAG does not match Cargo.toml version $CARGO_VERSION" >&2
@@ -31,6 +50,6 @@ jobs:
         uses: rust-lang/crates-io-auth-action@v1
         id: auth
       - name: Publish
-        run: cargo publish
+        run: cargo publish --locked
         env:
           CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}

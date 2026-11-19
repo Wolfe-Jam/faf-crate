@@ -70,11 +70,12 @@ client.broadcast("91.0", serde_json::json!({
 Inject `.faf` project context into every request:
 
 ```rust
-use faf::{FafLayer, FafContext};
+use axum::{routing::get, Router};
+use faf::axum::{FafContext, FafLayer};
 
 let app = Router::new()
     .route("/", get(handler))
-    .layer(FafLayer::discover());
+    .layer(FafLayer::new());
 
 async fn handler(faf: FafContext) -> String {
     format!("Project: {}", faf.project_name())
@@ -83,14 +84,16 @@ async fn handler(faf: FafContext) -> String {
 
 ## Ecosystem
 
-| Crate | Version | What |
-|-------|---------|------|
-| [`faf`](https://crates.io/crates/faf) | 0.3.0 | This meta-crate |
-| [`faf-rust-sdk`](https://crates.io/crates/faf-rust-sdk) | 1.3.0 | Core SDK — parse, validate, compile, FAFb |
-| [`faf-radio-rust`](https://crates.io/crates/faf-radio-rust) | 0.2.0 | Radio Protocol client |
-| [`rust-faf-mcp`](https://crates.io/crates/rust-faf-mcp) | 0.1.0 | MCP server for .faf |
+| Crate | What |
+|-------|------|
+| [`faf`](https://crates.io/crates/faf) | This meta-crate |
+| [`faf-rust-sdk`](https://crates.io/crates/faf-rust-sdk) | Core SDK — parse, validate, compile, FAFb |
+| [`faf-radio-rust`](https://crates.io/crates/faf-radio-rust) | Radio Protocol client |
+| [`rust-faf-mcp`](https://crates.io/crates/rust-faf-mcp) | MCP server for .faf |
 
-Also available in [TypeScript](https://www.npmjs.com/package/faf-cli), [Python](https://pypi.org/project/faf-python-sdk/), and [Zig](https://github.com/Wolfe-Jam/xai-faf-zig).
+`faf` 0.3.1 re-exports `faf-rust-sdk` 1.3 and, with `radio`, `faf-radio-rust` 0.2.
+
+Also available in [TypeScript](https://www.npmjs.com/package/faf-cli) and [Python](https://pypi.org/project/faf-python-sdk/).
 
 If `faf` has been useful, consider starring the repo — it helps others find it.
 

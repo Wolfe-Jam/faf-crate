@@ -198,10 +198,12 @@ dependencies = [
 
 [[package]]
 name = "faf"
-version = "0.3.0"
+version = "0.3.1"
 dependencies = [
+ "axum",
  "faf-radio-rust",
  "faf-rust-sdk",
+ "serde_json",
 ]
 
 [[package]]
