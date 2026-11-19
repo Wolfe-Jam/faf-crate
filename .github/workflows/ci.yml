@@ -7,13 +7,29 @@ on:
     branches: [main]
   workflow_dispatch: {}
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
+      # rustfmt's cargo wrapper rejects --locked; it does not resolve dependencies.
       - run: cargo fmt --check
-      - run: cargo clippy -- -D warnings
-      - run: cargo test
-      - run: cargo build --release
+      - run: cargo clippy --locked -- -D warnings
+      - run: cargo test --locked
+      - run: cargo build --locked --release
+
+  # radio pulls faf-radio-rust -> tokio-tungstenite -> native-tls -> openssl,
+  # which the default-feature job never compiles.
+  test-all-features:
+    name: test (all features)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo clippy --locked --all-features -- -D warnings
+      - run: cargo test --locked --all-features
+      - run: cargo build --locked --all-features --release
