@@ -129,15 +129,19 @@ mod engine {
 mod pit {
     use super::*;
 
-    /// rust-version in Cargo.toml is what the README states and what CI builds.
+    /// rust-version in Cargo.toml is what the README states, in its text and its
+    /// badge. CI's msrv job reads Cargo.toml itself. Only files that ship in
+    /// the crate are read, so this passes from the package too.
     #[test]
     fn msrv_agrees() {
         let cargo = read("Cargo.toml");
         let msrv = after(&cargo, "rust-version = ").trim_matches('"');
-        assert!(read("README.md").contains(&format!("Needs Rust {msrv} or newer")));
+        let readme = read("README.md");
         assert!(
-            read(".github/workflows/ci.yml").contains(&format!("dtolnay/rust-toolchain@{msrv}"))
+            readme.contains(&format!("Needs Rust {msrv} or newer")),
+            "README text"
         );
+        assert!(readme.contains(&format!("rustc-{msrv}+")), "README badge");
     }
 
     /// The crate docs' `faf = "x.y"` pin matches this version's major.minor.
