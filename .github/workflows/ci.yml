@@ -61,11 +61,33 @@ jobs:
       test-output-file: junit.xml
       test-result: ${{ needs.test-all-features.result }}
 
-  # rust-version in Cargo.toml is the promise; this job keeps it.
+  # rust-version in Cargo.toml is the promise; this job keeps it. It reads the
+  # version from Cargo.toml, so the claim and the gate can't drift.
   msrv:
-    name: msrv (1.85)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@1.85
-      - run: cargo build --locked --all-features
+      - name: Read rust-version
+        id: msrv
+        run: echo "v=$(grep -m1 '^rust-version' Cargo.toml | cut -d'"' -f2)" >> "$GITHUB_OUTPUT"
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ steps.msrv.outputs.v }}
+      - run: cargo +${{ steps.msrv.outputs.v }} build --locked --all-features
+
+  # The tests ship in the crate. Run them from the package, as a distro
+  # packager would, so a test that needs a file the package leaves out fails here.
+  packaged:
+    name: tests from the package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo package --locked --no-verify
+      - name: Test the unpacked crate
+        run: |
+          V=$(grep -m1 '^version' Cargo.toml | cut -d'"' -f2)
+          mkdir -p "$RUNNER_TEMP/crate"
+          tar -xzf "target/package/faf-$V.crate" -C "$RUNNER_TEMP/crate"
+          cd "$RUNNER_TEMP/crate/faf-$V"
+          cargo test --all-features

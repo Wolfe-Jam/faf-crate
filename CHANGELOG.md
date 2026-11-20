@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+- **WJTTC `pit::msrv_agrees` failed when run from the published crate:** it read `.github/workflows/ci.yml`, which the package leaves out. It now checks only files that ship (Cargo.toml, the README text and badge). Found by `/dev-notes` running `cargo test` inside faf 0.4.1.
+
+### Changed
+- **CI:** the msrv job reads `rust-version` from Cargo.toml instead of naming 1.85, and is now called `msrv`. A new job, `tests from the package`, unpacks `cargo package` output and runs `cargo test --all-features` there.
+
 ## [0.4.1] - 2026-11-19
 
 **0.4.1: crates.io gets the new front door — badges, Rust 1.85, a starter project.faf, where to report issues — plus a WJTTC suite, a business card and test receipts.**
